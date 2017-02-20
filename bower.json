@@ -1,0 +1,20 @@
+{
+  "name": "nudge",
+  "description": "super cool app",
+  "main": "app.js",
+  "authors": [
+    "Julia / Manu"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
