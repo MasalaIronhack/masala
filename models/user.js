@@ -10,8 +10,11 @@ var UserSchema = new mongoose.Schema({
        },
        access_token: {
            type: String
-       }
+       },
+       userDatas : {}
    });
+
+
 
    UserSchema.statics.findOneOrCreate = function(filters, cb) {
        User = this;
