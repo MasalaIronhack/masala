@@ -12,6 +12,7 @@ const auth                = require('./routes/auth');
 //const users                = require('./routes/users');
 const mongoose             = require('mongoose');
 const User                 = require('./models/user');
+
 const session              = require("express-session");
 const MongoStore           = require("connect-mongo")(session);
 const BearerStrategy       = require('passport-http-bearer').Strategy;
@@ -35,7 +36,7 @@ passport.use(
                     if(result) {
                         console.log(profile);
                         result.name = profile.displayName;
-                        result.access_token = "EAAMSMZCF0V70BANvQAr5UUB0Riv2GoamRMIQUNwAn9LM0on4ZANA7lZC7R2Q6uxzgLjjXZCY1O7ORK1sCLV74W4EbHmHovz5EiSnuZAZAtVsRJXKphyZBqNO74PN5OB1K9eiYfHWaGMoMVjJpBdA8WUHVxAZCMddURmd7odparZARw8vHE36WZAxlr";
+                        result.access_token = "EAAMSMZCF0V70BACEZARvzPsgudbyC6SbDSAEJesRnJtOzni4fBw4ZBLH8plJOrIF6f7TEY7ZBblNPqC72W3UrVLUKE0BtkwTQZC67b6rPmNZBAZAvs0yzZBU6oh1idB8eoYwB2RhgIOokuNNeuOWoXh5FeaiEiEW6YkjrlivMB0ByvFt3IZAlZCO1G";
                         result.save(function(err, doc) {
                             done(err, doc);
                         });

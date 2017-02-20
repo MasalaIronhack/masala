@@ -15,6 +15,13 @@ router.get(
     }
 );
 
+router.post('/account', function(req, res){
+    var data = req.body.datas;
+    console.log(data);
+});
+
+
+
 router.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
