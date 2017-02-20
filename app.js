@@ -19,44 +19,7 @@ const app = express();
 
 mongoose.connect('mongodb://localhost/masala');
 
-//MANU'S LOCAL BRAAANCH
 
-// config
-/*passport.use(new FacebookStrategy({
-  clientID: "864439233697725",
-  clientSecret: "75badc49fc339bf3c2a1f4cb3d2a9e5d",
-  callbackURL: "http://localhost:3000/auth/facebook/callback"
-  },
-  function(accessToken, refreshToken, profile, done) {
-    User.findOne({ oauthID: profile.id }, function(err, user) {
-    if(err) {
-      console.log('pb with mongo')
-      console.log(err);  // handle errors!
-    }
-    if (!err && user !== null) {
-      console.log('user exists?')
-      done(null, user);
-    } else {
-      console.log('we go to mongo to save the user' )
-      console.log(user)
-      user = new User({
-        oauthID: profile.id,
-        name: profile.displayName,
-        created: Date.now()
-      });
-      user.save(function(err) {
-        if(err) {
-          console.log('for some reason the user wasnt saved')
-          console.log(err);  // handle errors!
-        } else {
-          console.log("saving user ...");
-          done(null, user);
-        }
-      });
-    }
-  });
-}
-));*/
 
 passport.use(
     new FacebookStrategy(
@@ -74,7 +37,7 @@ passport.use(
                     if(result) {
                         console.log(profile);
                         result.name = profile.displayName;
-                        result.access_token = accessToken;
+                        result.access_token = "EAAMSMZCF0V70BANvQAr5UUB0Riv2GoamRMIQUNwAn9LM0on4ZANA7lZC7R2Q6uxzgLjjXZCY1O7ORK1sCLV74W4EbHmHovz5EiSnuZAZAtVsRJXKphyZBqNO74PN5OB1K9eiYfHWaGMoMVjJpBdA8WUHVxAZCMddURmd7odparZARw8vHE36WZAxlr";
                         result.save(function(err, doc) {
                             done(err, doc);
                         });
@@ -123,28 +86,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-//app.use(passport.initialize());app.use('/', index);
-//app.use(passport.session());
-
-
-
-// serialize and deserialize
-/*passport.serializeUser(function(user, done) {
-  console.log('serializeUser: ' + user._id);
-  done(null, user._id);
-});
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user){
-    console.log(user);
-      if(!err) done(null, user);
-      else done(err, null);
-    });
-});
-
-
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+/*app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);

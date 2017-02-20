@@ -1,19 +1,29 @@
-$(document).ready(function() {
-    FB.login(function(response) {
-        if (response.status == 'connected') {
-            var user_id = response.authResponse.userID;
-            var page_id = "40796308305"; // coca cola page https://www.facebook.com/cocacola
-            var fql_query = "SELECT uid FROM page_fan WHERE page_id=" + page_id + " and uid=" + user_id;
+FB.init({
+  appId      : '864439233697725',
+  status     : true,
+  xfbml      : true,
+  version    : 'v2.7' // or v2.6, v2.5, v2.4, v2.3
+});
 
-            FB.api('/me/likes/'+page_id, function(response) {
-                if (response.data[0]) {
-                    $("#container_like").show();
-                } else {
-                    $("#container_notlike").show();
-                }
-            });
-        } else {
-            // user is not logged in
-        }
-    });
+
+
+
+
+function getFBData () {
+  FB.api(
+  '/me',
+  'GET',
+
+  {"fields":"music,books,likes,events,movies,television,games,friendlists,taggable_friends",
+    "access_token" :"EAAMSMZCF0V70BANvQAr5UUB0Riv2GoamRMIQUNwAn9LM0on4ZANA7lZC7R2Q6uxzgLjjXZCY1O7ORK1sCLV74W4EbHmHovz5EiSnuZAZAtVsRJXKphyZBqNO74PN5OB1K9eiYfHWaGMoMVjJpBdA8WUHVxAZCMddURmd7odparZARw8vHE36WZAxlr"},
+  function(response) {
+    console.log(response);
+      // Insert your code here
+    }
+  );
+}
+
+$(document).ready(function() {
+getFBData();
+getFriends();
 });
