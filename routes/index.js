@@ -10,8 +10,8 @@ router.get(
     '/account',
     passport.authenticate('bearer', { session: false }),
     function(req, res) {
-    res.send("LOGGED IN as " + req.user.facebookId + req.user.user_likes + "Name:"+req.user.name +"  - <a href=\"/logout\">Log out</a>");
-    //res.render('profile');
+    //res.send("LOGGED IN as " + req.user.facebookId + "Name:"+req.user.name +" - <a href=\"/logout\">Log out</a>");
+    res.render('profile');
     }
 );
 
