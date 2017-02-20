@@ -19,7 +19,7 @@ const app = express();
 
 mongoose.connect('mongodb://localhost/masala');
 
-
+//MANU'S BRAAANCH
 
 // config
 /*passport.use(new FacebookStrategy({
@@ -64,7 +64,7 @@ passport.use(
         clientID: "864439233697725",
         clientSecret: "75badc49fc339bf3c2a1f4cb3d2a9e5d",
         callbackURL: "http://localhost:3000/auth/facebook/callback",
-        // profileFields: ['id', 'displayName','user_likes','user_friends'], 
+        // profileFields: ['id', 'displayName','user_likes','user_friends'],
         },
         function(accessToken, refreshToken, profile, done) {
             User.findOneOrCreate(
