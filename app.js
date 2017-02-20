@@ -19,7 +19,7 @@ const app = express();
 
 mongoose.connect('mongodb://localhost/masala');
 
-//MANU'S BRAAANCH
+//MANU'S LOCAL BRAAANCH
 
 // config
 /*passport.use(new FacebookStrategy({
