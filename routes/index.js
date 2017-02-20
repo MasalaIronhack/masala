@@ -20,4 +20,19 @@ router.get('/logout', function(req, res){
   res.redirect('/');
 });
 
+// $('.btn').click(function() {
+//
+// $('.text').text('loading . . .');
+//
+// $.ajax({
+//     type:"GET", // GET = requesting data
+//     url: "https://api.meetup.com/find/venues",
+//     success: function(data) {
+//       $('.text').text(JSON.stringify(data)); // Set data that comes back from the server to 'text'
+//     },
+//     // error: function()
+//     dataType: 'jsonp',
+//   });
+// });
+
 module.exports = router;
