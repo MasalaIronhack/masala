@@ -19,7 +19,8 @@ const app = express();
 
 mongoose.connect('mongodb://localhost/masala');
 
-// julia
+//MANU'S BRAAANCH
+>>>>>>> b708f7a7454eaafaddbbafd0132b21df8d6522ed
 
 // config
 /*passport.use(new FacebookStrategy({
