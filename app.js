@@ -11,14 +11,13 @@ const index                = require('./routes/index');
 const auth                = require('./routes/auth');
 //const users                = require('./routes/users');
 const mongoose             = require('mongoose');
-const User                 = require('./models/user')
+const User                 = require('./models/user');
 const session              = require("express-session");
 const MongoStore           = require("connect-mongo")(session);
 const BearerStrategy       = require('passport-http-bearer').Strategy;
 const app = express();
 
 mongoose.connect('mongodb://localhost/masala');
-
 
 passport.use(
     new FacebookStrategy(
@@ -49,7 +48,7 @@ passport.use(
     )
 );
 
-
+app.use(express.static(path.join(__dirname, "bower_components")));
 app.use('/', auth);
 
 
