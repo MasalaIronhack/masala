@@ -10,7 +10,7 @@ router.get(
     '/account',
     passport.authenticate('bearer', { session: false }),
     function(req, res) {
-    res.send("LOGGED IN as " + req.user.facebookId + "Name:"+req.user.name +" - <a href=\"/logout\">Log out</a>");
+    res.send("LOGGED IN as " + req.user.facebookId + req.user.user_likes + "Name:"+req.user.name +"  - <a href=\"/logout\">Log out</a>");
     //res.render('profile');
     }
 );
@@ -19,5 +19,20 @@ router.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
+
+// $('.btn').click(function() {
+//
+// $('.text').text('loading . . .');
+//
+// $.ajax({
+//     type:"GET", // GET = requesting data
+//     url: "https://api.meetup.com/find/venues",
+//     success: function(data) {
+//       $('.text').text(JSON.stringify(data)); // Set data that comes back from the server to 'text'
+//     },
+//     // error: function()
+//     dataType: 'jsonp',
+//   });
+// });
 
 module.exports = router;

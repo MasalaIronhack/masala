@@ -11,7 +11,7 @@ const index                = require('./routes/index');
 const auth                = require('./routes/auth');
 //const users                = require('./routes/users');
 const mongoose             = require('mongoose');
-const User                 = require('./models/user')
+const User                 = require('./models/user');
 const session              = require("express-session");
 const MongoStore           = require("connect-mongo")(session);
 const BearerStrategy       = require('passport-http-bearer').Strategy;
@@ -19,52 +19,13 @@ const app = express();
 
 mongoose.connect('mongodb://localhost/masala');
 
-
-
-// config
-/*passport.use(new FacebookStrategy({
-  clientID: "864439233697725",
-  clientSecret: "75badc49fc339bf3c2a1f4cb3d2a9e5d",
-  callbackURL: "http://localhost:3000/auth/facebook/callback"
-  },
-  function(accessToken, refreshToken, profile, done) {
-    User.findOne({ oauthID: profile.id }, function(err, user) {
-    if(err) {
-      console.log('pb with mongo')
-      console.log(err);  // handle errors!
-    }
-    if (!err && user !== null) {
-      console.log('user exists?')
-      done(null, user);
-    } else {
-      console.log('we go to mongo to save the user' )
-      console.log(user)
-      user = new User({
-        oauthID: profile.id,
-        name: profile.displayName,
-        created: Date.now()
-      });
-      user.save(function(err) {
-        if(err) {
-          console.log('for some reason the user wasnt saved')
-          console.log(err);  // handle errors!
-        } else {
-          console.log("saving user ...");
-          done(null, user);
-        }
-      });
-    }
-  });
-}
-));*/
-
 passport.use(
     new FacebookStrategy(
       {
         clientID: "864439233697725",
         clientSecret: "75badc49fc339bf3c2a1f4cb3d2a9e5d",
         callbackURL: "http://localhost:3000/auth/facebook/callback",
-        // profileFields: ['id', 'displayName','user_likes','user_friends'], 
+        // profileFields: ['id', 'displayName','user_likes','user_friends'],
         },
         function(accessToken, refreshToken, profile, done) {
             User.findOneOrCreate(
@@ -87,7 +48,7 @@ passport.use(
     )
 );
 
-
+app.use(express.static(path.join(__dirname, "bower_components")));
 app.use('/', auth);
 
 
