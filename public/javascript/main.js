@@ -11,11 +11,12 @@ function handleError (err) {
 
 
 FB.init({
-  appId      : '864439233697725',
-  status     : true,
-  xfbml      : true,
-  version    : 'v2.7' // or v2.6, v2.5, v2.4, v2.3
+    appId: '864439233697725',
+    status: true,
+    xfbml: true,
+    version: 'v2.7' // or v2.6, v2.5, v2.4, v2.3
 });
+
 
 
 function getFBData () {
@@ -39,12 +40,44 @@ function getFBData () {
             });    }
 
 
+////////////TasteKid////////////
 
+// We must declare "searchTerm" variable with Facebook movie/books/music/authors parameters
+
+// type: specifies the desired type of results. It can be one of the following:
+// music, movies, shows, books, authors, games.
+// If not specified, the results can have mixed types.
+
+var getTasteKidAPIResults = function(searchTerm, searchType) {
+
+    var params = {
+        k: '260998-Masala-6RJUMGXP',
+        type: searchType,
+        q: searchTerm,
+        info: 1,
+        limit: 10,
+    };
+
+
+    $.ajax({
+        url: 'https://www.tastekid.com/api/similar',
+        dataType: 'jsonp',
+        data: params,
+        type: 'GET',
+        success: function(response) {
+            console.log(response);
+        },
+        error: function(response) {
+            console.error(response);
+        }
+    });
+};
+////////////TasteKid////////////
+
+////////////Functions init////////////
 $(document).ready(function() {
-  $('button').on('click', function(){
-    console.log(datas);
-  })
-getFBData();
 
+    getFBData();
+    getTasteKidAPIResults('Titanic');
 
 });
