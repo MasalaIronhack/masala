@@ -1,3 +1,7 @@
+require('dotenv').config();
+const bodyParser           = require('body-parser');
+
+
 var express = require('express');
 var router = express.Router();
 const passport = require('passport');
@@ -17,9 +21,10 @@ router.get(
 );
 
 router.post('/account', function(req, res){
-    //var data = req.params.datas;
-      console.log('lol');
-    //console.log(data);
+console.log('body');
+  console.log(req.body);
+    //var data = req.params.hola;
+    return res.sendStatus(200);
 });
 
 
@@ -28,20 +33,5 @@ router.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
-
-// $('.btn').click(function() {
-//
-// $('.text').text('loading . . .');
-//
-// $.ajax({
-//     type:"GET", // GET = requesting data
-//     url: "https://api.meetup.com/find/venues",
-//     success: function(data) {
-//       $('.text').text(JSON.stringify(data)); // Set data that comes back from the server to 'text'
-//     },
-//     // error: function()
-//     dataType: 'jsonp',
-//   });
-// });
 
 module.exports = router;
