@@ -22,7 +22,7 @@ router.get(
 
 router.post('/account', function(req, res){
 console.log('body');
-  console.log(req.body);
+  console.log(req.body.hola);
     //var data = req.params.hola;
     return res.sendStatus(200);
 });

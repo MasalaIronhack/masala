@@ -26,7 +26,7 @@ function getFBData () {
         },
             function(response) {
               console.log(response);
-              let obj = {hola: "hola"};
+              let obj = {hola: "holaaaa"};
 
               $.ajax({
                   type: "POST",
