@@ -31,7 +31,7 @@ function getFBData () {
   function(response) {
     console.log(response);
     var datas = response;
-    return datas
+    return datas;
 
     }
   );
