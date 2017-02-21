@@ -16,6 +16,8 @@ const User                 = require('./models/user');
 const session              = require("express-session");
 const MongoStore           = require("connect-mongo")(session);
 const BearerStrategy       = require('passport-http-bearer').Strategy;
+const meetup               = require('meetup-api')({
+                             key: '406044782c42396269125310632a6519'});
 const app = express();
 
 mongoose.connect('mongodb://localhost/masala');
@@ -72,6 +74,50 @@ passport.use(
         }
     )
 );
+
+// MeetUp Test
+// function getMeetUpCategories() {
+// meetup.getCategories(function(err, resp) {
+//     console.log(err, resp);
+// });
+// }
+
+
+// function getMeetUpVenues() {
+//   meetup.getOpenVenues(event_query, function(err, resp) {
+//       console.log(err, resp);
+//   });
+// }
+
+// function getMeetUpEvents () {
+//   console.log("Get events");
+//   var ovs = meetup.getStreamOpenEvents({
+//     name: 'Barcelona'
+//   }).on('data', function(obj) {
+//     console.log(obj);
+// 		console.log('%s (%s) at %s (%s)',
+// 			obj.name,
+// 			obj.group.name,
+// 			obj.group.city,
+// 			obj.group.country.toUpperCase()
+// 		);
+// 		ovs.abort();
+//   });
+// }
+
+// MeetUp Test WORKING
+// With text and latitude/longitude
+function getMeetUpEvents () {
+meetup.getOpenEvents({'text':'javascript', 'lon': '-73.979431', 'lat': '40.752125'}, function(err,events) {
+console.log(events);
+});
+}
+
+getMeetUpEvents();
+//////
+
+// getMeetUpCategories();
+// getMeetUpVenues();
 
 app.use('/', index);
 // view engine setup
