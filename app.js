@@ -75,49 +75,16 @@ passport.use(
     )
 );
 
-// MeetUp Test
-// function getMeetUpCategories() {
-// meetup.getCategories(function(err, resp) {
-//     console.log(err, resp);
-// });
-// }
-
-
-// function getMeetUpVenues() {
-//   meetup.getOpenVenues(event_query, function(err, resp) {
-//       console.log(err, resp);
-//   });
-// }
-
-// function getMeetUpEvents () {
-//   console.log("Get events");
-//   var ovs = meetup.getStreamOpenEvents({
-//     name: 'Barcelona'
-//   }).on('data', function(obj) {
-//     console.log(obj);
-// 		console.log('%s (%s) at %s (%s)',
-// 			obj.name,
-// 			obj.group.name,
-// 			obj.group.city,
-// 			obj.group.country.toUpperCase()
-// 		);
-// 		ovs.abort();
-//   });
-// }
-
-// MeetUp Test WORKING
-// With text and latitude/longitude
+/////////MeetUp//////////
+// With text and latitude/longitude parameters
 function getMeetUpEvents () {
-meetup.getOpenEvents({'text':'javascript', 'lon': '-73.979431', 'lat': '40.752125'}, function(err,events) {
+meetup.getOpenEvents({'text':'Star Wars', 'lon': '-73.979431', 'lat': '40.752125', 'page' : '1'}, function(err,events) {
 console.log(events);
 });
 }
 
 getMeetUpEvents();
-//////
-
-// getMeetUpCategories();
-// getMeetUpVenues();
+////////////////////////
 
 app.use('/', index);
 // view engine setup
