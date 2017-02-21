@@ -17,6 +17,8 @@ const User                 = require('./models/user');
 const session              = require("express-session");
 const MongoStore           = require("connect-mongo")(session);
 const BearerStrategy       = require('passport-http-bearer').Strategy;
+const meetup               = require('meetup-api')({
+                             key: '406044782c42396269125310632a6519'});
 const app = express();
 
 mongoose.connect('mongodb://localhost/masala');
@@ -71,6 +73,18 @@ passport.use(
         }
     )
 );
+
+/////////MeetUp//////////
+// With text and latitude/longitude parameters
+function getMeetUpEvents () {
+meetup.getOpenEvents({'text':'Star Wars', 'lon': '-73.979431', 'lat': '40.752125', 'page' : '1'}, function(err,events) {
+console.log(events);
+});
+}
+
+getMeetUpEvents();
+////////////////////////
+
 
 
 // uncomment after placing your favicon in /public
