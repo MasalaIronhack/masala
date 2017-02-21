@@ -1,4 +1,5 @@
 //require('dotenv').config();
+var user_token = "EAAMSMZCF0V70BAHeZBwggC5hVstOZAXikUaZCgUcZCIu9bzj2iYfeQrwgg9gsX5AUbJLYlaWpamdIGhBKaJHZBxiWZAMaZCENciKLiNWVIyi9ZCCI3gdc1RZAZCQZBvvrAVZAr1d0sfCeyO9BSfXLqf2WlnmfIzIYjqDJQrUth9jkGPqhmsVZCa8mIn2T3"
 function showFeedback (postResponse) {
   console.log('post success');
   console.log(postResponse);
@@ -7,6 +8,23 @@ function showFeedback (postResponse) {
 function handleError (err) {
   console.log('Oh no! Error:');
   console.log(err);
+}
+
+var sortedDatas = {};
+function sortDatas(obj, coord){
+
+    sortedDatas.books    = obj.books.data.map((book)   =>  book.name);
+    sortedDatas.movies   = obj.movies.data.map((movie) =>  movie.name);
+    sortedDatas.likes    = obj.likes.data.map((like)   =>  like.name);
+    sortedDatas.events   = obj.events.data.map((event) =>  event.name);
+    sortedDatas.music    = obj.music.data.map((mus)    =>  mus.name);
+    sortedDatas.taggable_friends    = obj.taggable_friends.data.map( (friend) =>  friend.name);
+    sortedDatas.television          = obj.television.data.map((tv)    =>  tv.name);
+    sortedDatas.coordinates         = coord;
+
+
+    console.log(sortedDatas);
+    return sortedDatas;
 }
 
 
@@ -20,24 +38,43 @@ FB.init({
 
 
 function getFBData () {
+  ////////////////////////////First request to get user datas
   FB.api('/me',
          'GET',
-        {"fields":"music,books,likes,events,movies,television,games,friendlists,taggable_friends",
-         "access_token" :"EAAMSMZCF0V70BAEb1uJARIzewWqPY20l6WzZAb8fLqshbz1bwl3QsJdNzFqItPh2JsXn5FpERx1s7abvxZCpPka0IHhpXlwPAeaXZBRN0n6ZAA2gZAin3ulOVHz4ZATM1NRWkmNjehosrV74foGiRalhjsZA3dMhQRfRZB3k9aaU8xMMeL63oPryN"
+        {"fields":"music,books,likes,events,movies,television,games,friendlists,taggable_friends,location",
+         "access_token" :user_token
         },
             function(response) {
-              console.log(response);
-              let obj = {hola: "holaaaa"};
 
-              $.ajax({
-                  type: "POST",
-                  data: JSON.stringify(obj),
-                  contentType: "application/json",
-                  url:     '/account',
-                  success: showFeedback,
-                  error:   handleError
-                });
-            });    }
+              var locationID = response.location.id;
+              var coordinates= {};
+/////////////////Second request to get user location
+              FB.api('/'+locationID,
+                     'GET',
+                    {"fields":"location",
+                     "access_token" :user_token
+                    },
+                        function(response) {
+                          coordinates.latitude  = response.location.latitude;
+                          coordinates.longitude = response.location.longitude;
+                          //console.log(response);
+                        })
+
+          console.log(response);
+
+          sortDatas(response,coordinates);
+          let obj = {userDatas: sortedDatas};
+
+          $.ajax({
+              type: "POST",
+              data: JSON.stringify(obj),
+              contentType: "application/json",
+              url:     '/account',
+              success: showFeedback,
+              error:   handleError
+            });
+        });
+   }
 
 
 ////////////TasteKid////////////

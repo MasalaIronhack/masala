@@ -21,12 +21,23 @@ router.get(
 );
 
 router.post('/account', function(req, res){
-console.log('body');
-  console.log(req.body.hola);
+  console.log(req.body.userDatas);
+
+    const datas = {
+      userDatas : req.body.userDatas
+    };
+    User.findByIdAndUpdate("58a9d98739728640b31d83f4", datas, { new: true },(err, user) => {
+      if (err)       { return res.render('index') }
+    if (!campaign) { return res.render('index') }
+    return res.redirect('/account');
+
+    });
+
+    //var data = req.params.hola;
+
     //var data = req.params.hola;
     return res.sendStatus(200);
 });
-
 
 
 router.get('/logout', function(req, res){

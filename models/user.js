@@ -11,7 +11,9 @@ var UserSchema = new mongoose.Schema({
        access_token: {
            type: String
        },
-       userDatas : {}
+       userDatas : {
+         type: Object
+       }
    });
 
 

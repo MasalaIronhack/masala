@@ -78,7 +78,7 @@ passport.use(
 // With text and latitude/longitude parameters
 function getMeetUpEvents () {
 meetup.getOpenEvents({'text':'Star Wars', 'lon': '-73.979431', 'lat': '40.752125', 'page' : '1'}, function(err,events) {
-console.log(events);
+//console.log(events);
 });
 }
 
