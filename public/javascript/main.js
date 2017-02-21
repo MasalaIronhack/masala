@@ -6,6 +6,18 @@ FB.init({
 });
 
 
+function saveTo(data){
+$.ajax({
+      url: "'mongodb://localhost/masala/users",
+      method: "POST",
+      data:    data,
+      success: (response) =>{
+        console.log('success!');
+        console.log(response);
+      },
+      error:   handleError
+    })
+}
 
 
 
@@ -15,15 +27,36 @@ function getFBData () {
   'GET',
 
   {"fields":"music,books,likes,events,movies,television,games,friendlists,taggable_friends",
-    "access_token" :"EAAMSMZCF0V70BANvQAr5UUB0Riv2GoamRMIQUNwAn9LM0on4ZANA7lZC7R2Q6uxzgLjjXZCY1O7ORK1sCLV74W4EbHmHovz5EiSnuZAZAtVsRJXKphyZBqNO74PN5OB1K9eiYfHWaGMoMVjJpBdA8WUHVxAZCMddURmd7odparZARw8vHE36WZAxlr"},
+    "access_token" :"EAAMSMZCF0V70BACEZARvzPsgudbyC6SbDSAEJesRnJtOzni4fBw4ZBLH8plJOrIF6f7TEY7ZBblNPqC72W3UrVLUKE0BtkwTQZC67b6rPmNZBAZAvs0yzZBU6oh1idB8eoYwB2RhgIOokuNNeuOWoXh5FeaiEiEW6YkjrlivMB0ByvFt3IZAlZCO1G"},
   function(response) {
     console.log(response);
-      // Insert your code here
+    var datas = response;
+    return datas;
+
     }
   );
 }
 
+
+$
+
+
+function showFeedback (postResponse) {
+console.log('post success');
+console.log(postResponse);
+}
+
+function handleError (err) {
+console.log('Oh no! Error:');
+console.log(err);
+}
+
+
+
 $(document).ready(function() {
 getFBData();
-getFriends();
+
+
+
+
 });

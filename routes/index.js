@@ -10,10 +10,19 @@ router.get(
     '/account',
     passport.authenticate('bearer', { session: false }),
     function(req, res) {
+
     //res.send("LOGGED IN as " + req.user.facebookId + "Name:"+req.user.name +" - <a href=\"/logout\">Log out</a>");
     res.render('profile');
     }
 );
+
+router.post('/account', function(req, res){
+    //var data = req.params.datas;
+      console.log('lol');
+    //console.log(data);
+});
+
+
 
 router.get('/logout', function(req, res){
   req.logout();
