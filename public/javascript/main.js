@@ -22,8 +22,8 @@ FB.init({
 function getFBData () {
   FB.api('/me',
          'GET',
-        {"fields":"music,books,likes,events,movies,television,games,friendlists,taggable_friends",
-         "access_token" :"EAAMSMZCF0V70BAEb1uJARIzewWqPY20l6WzZAb8fLqshbz1bwl3QsJdNzFqItPh2JsXn5FpERx1s7abvxZCpPka0IHhpXlwPAeaXZBRN0n6ZAA2gZAin3ulOVHz4ZATM1NRWkmNjehosrV74foGiRalhjsZA3dMhQRfRZB3k9aaU8xMMeL63oPryN"
+        {"fields":"music,books,likes,events,movies,television,games,friendlists,taggable_friends, location",
+         "access_token" :"EAAMSMZCF0V70BAP8WOWRgUriENQROxXlbNAkyxVxWLmz2oruMO0oDp5VXvgMip1JNo1HR2Sz8cqy9CUMzHw4jg5xUlxPMF5ZCQHMWFl1jWa8hberGtRMPDZCUpHtJWH38aSZCxTsaMyDPoOmXsFC8mf2HllFxLHoHbeeBiZBBbI1riXwWtnoE"
         },
             function(response) {
               console.log(response);
