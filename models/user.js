@@ -11,25 +11,15 @@ var UserSchema = new mongoose.Schema({
        access_token: {
            type: String
        },
-       userDatas : {}
+       fbid : {
+         type : Number
+       },
+       datas : {
+           type : Schema.Types.Mixed
+       }
+
    });
 
-
-
-   UserSchema.statics.findOneOrCreate = function(filters, cb) {
-       User = this;
-       this.find(filters, function(err, results) {
-           if(results.length == 0) {
-               var newUser = new User();
-               newUser.facebookId = filters.facebookId;
-               newUser.save(function(err, doc) {
-                   cb(err, doc)
-               });
-           } else {
-               cb(err, results[0]);
-           }
-       });
-   };
 
 
 //userSchema.set('timestamps', true);
