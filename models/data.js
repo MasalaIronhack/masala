@@ -1,9 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-var DataSchema = new mongoose.Schema({
-  type : Object
-   });
+var DataSchema = new mongoose.Schema(
+    { content :
+      {
+          type : Schema.Types.Mixed
+      }
+    }
+  );
 
 
 
