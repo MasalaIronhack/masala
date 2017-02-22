@@ -1,6 +1,6 @@
 $(document).ready(function() {
     console.log("ready!");
-    $(document).on('click', 'a', function(event) {
+    $(document).on('click', ".anchorLink", function(event) {
         event.preventDefault();
 
         $('html, body').animate({

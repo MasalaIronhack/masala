@@ -1,23 +1,23 @@
 require('dotenv').config();
-const bodyParser           = require('body-parser');
-const Friend                 = require('../models/friends');
-const Data                 = require('../models/data');
+const bodyParser = require('body-parser');
+const Friend = require('../models/friends');
+const Data = require('../models/data');
+const TasteKid = require('../models/tastekid');
 var express = require('express');
 var router = express.Router();
 const passport = require('passport');
 
 /* GET users listing. */
-router.get('/', function(req, res){
-  res.render('index');
+router.get('/', function(req, res) {
+    res.render('index');
 });
 
 router.get('/account', isLoggedIn, function(req, res) {
-      res.render('profile.ejs', {
-          user : req.user // get the user out of session and pass to template
-      });
-  });
+    res.render('profile.ejs', {
+        user: req.user // get the user out of session and pass to template
+    });
+});
 
-router.post('/account', function(req, res){
 // var query = {'fbid':req.user.fbid};
 
 // var insertion = {
@@ -30,53 +30,58 @@ router.post('/account', function(req, res){
 // });
 
 // console.log(req.user.fbid);
-// console.log(req.body.userDatas);
 
-/// FRIENDS LOGIC
-  var insertionFriends = {
-    friends : req.body.userDatas.taggable_friends,
-  };
+router.post('/account', function(req, res) {
 
-  // console.log(req.body.userDatas.taggable_friends);
-  //console.log(insertionFriends);
+    /// FRIENDS REQUEST
+    var insertionFriends = {
+        friends: req.body.userDatas.taggable_friends,
+        user: req.user
+    };
 
-  var newFriends = new Friend(insertionFriends);
+    // TASTEKID REQUEST
 
-  newFriends.save((err) => {
-   if (err) {
-     res.render('index', {
-       errorMessage: 'Something went wrong. Try again later.'
-     });
-     return;
-   }
-   res.redirect('/');
-   return
-  });
+    var insertionTastekid = {
+        books: req.body.userDatas.books,
+        movies: req.body.userDatas.movies,
+        games: req.body.userDatas.games,
+        user: req.user
+    };
 
-//// USER DATA LOGIC
 
-  // var insertion = {
-  //  content : req.body.userDatas,
-  //  user : req.user
-  // };
-  //
-  // var newDatas = new Data(insertion);
-  //
-  // newDatas.save((err) => {
-  //  if (err) {
-  //    res.render('index', {
-  //      errorMessage: 'Something went wrong. Try again later.'
-  //    });
-  //    return;
-  //  }
-  //
-  //  res.redirect('/');
-  // });
+    var newFriends = new Friend(insertionFriends);
+    var newTasteKid = new TasteKid(insertionTastekid);
+
+    console.log(insertionTastekid);
+
+    newFriends.save((err) => {
+        if (err) {
+            res.render('index', {
+                errorMessage: 'Something went wrong. Try again later.'
+            });
+            return;
+        }
+        return;
+    });
+
+    newTasteKid.save((err) => {
+        if (err) {
+            res.render('index', {
+                errorMessage: 'Something went wrong. Try again later.'
+            });
+            return;
+        }
+        res.redirect('/');
+        return;
+    });
+
+
 });
 
-router.get('/logout', function(req, res){
-  req.logout();
-  res.redirect('/');
+
+router.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/');
 });
 
 /////////////////////////////////////
