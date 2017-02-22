@@ -1,16 +1,15 @@
 require('dotenv').config();
 const bodyParser           = require('body-parser');
-
+const Friend                 = require('../models/friends');
 const Data                 = require('../models/data');
-
 var express = require('express');
 var router = express.Router();
 const passport = require('passport');
+
 /* GET users listing. */
 router.get('/', function(req, res){
   res.render('index');
 });
-
 
 router.get('/account', isLoggedIn, function(req, res) {
       res.render('profile.ejs', {
@@ -18,31 +17,61 @@ router.get('/account', isLoggedIn, function(req, res) {
       });
   });
 
-
-
-
-
-
-
-
-
 router.post('/account', function(req, res){
-var query = {'fbid':req.user.fbid};
+// var query = {'fbid':req.user.fbid};
 
-var insertion = {
-  datas : req.body.userDatas
-}
-User.findOneAndUpdate(query, { $set: insertion }, {upsert:true}, function(err, doc){
-    if (err) return res.send(500, { error: err });
-    return res.send("succesfully saved");
+// var insertion = {
+//   datas : req.body.userDatas
+// };
+
+// User.findOneAndUpdate(query, { $set: insertion }, {upsert:true}, function(err, doc){
+//     if (err) return res.send(500, { error: err });
+//     return res.send("succesfully saved");
+// });
+
+// console.log(req.user.fbid);
+// console.log(req.body.userDatas);
+
+/// FRIENDS LOGIC
+  var insertionFriends = {
+    friends : req.body.userDatas.taggable_friends,
+  };
+
+  // console.log(req.body.userDatas.taggable_friends);
+  //console.log(insertionFriends);
+
+  var newFriends = new Friend(insertionFriends);
+
+  newFriends.save((err) => {
+   if (err) {
+     res.render('index', {
+       errorMessage: 'Something went wrong. Try again later.'
+     });
+     return;
+   }
+   res.redirect('/');
+  });
+
+//// USER DATA LOGIC
+
+  // var insertion = {
+  //  content : req.body.userDatas,
+  //  user : req.user
+  // };
+  //
+  // var newDatas = new Data(insertion);
+  //
+  // newDatas.save((err) => {
+  //  if (err) {
+  //    res.render('index', {
+  //      errorMessage: 'Something went wrong. Try again later.'
+  //    });
+  //    return;
+  //  }
+  //
+  //  res.redirect('/');
+  // });
 });
-
-
-  console.log(req.user.fbid);
-  console.log(req.body.userDatas);
-    return res.sendStatus(200);
-});
-
 
 router.get('/logout', function(req, res){
   req.logout();

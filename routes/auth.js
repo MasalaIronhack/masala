@@ -1,6 +1,6 @@
 require('dotenv').config();
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const passport = require('passport');
 
 /* GET home page. */
@@ -8,7 +8,12 @@ router.get('/', function(req, res) {
         res.render('index.ejs');
     });
 
-
+router.get(
+  '/auth/facebook',
+    passport.authenticate('facebook', { session: false,
+      scope: ['user_friends', 'user_likes'] ,
+      })
+);
 
 // route for facebook authentication and login
  router.get('/auth/facebook', passport.authenticate('facebook', { scope : [] }));
@@ -21,7 +26,6 @@ router.get('/', function(req, res) {
      }));
 
 
-
  // route middleware to make sure a user is logged in
  function isLoggedIn(req, res, next) {
 
@@ -32,11 +36,6 @@ router.get('/', function(req, res) {
      // if they aren't redirect them to the home page
      res.redirect('/');
  }
-
-
-
-
-
 
 
 module.exports = router;
