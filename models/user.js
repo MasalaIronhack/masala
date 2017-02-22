@@ -15,9 +15,7 @@ var UserSchema = new mongoose.Schema({
          type : Number
        },
        datas : {
-           type : Schema.Types.Mixed
-       }
-
+          any: [Schema.Types.Mixed] }
    });
 
 

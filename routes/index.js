@@ -7,29 +7,21 @@ var express = require('express');
 var router = express.Router();
 const passport = require('passport');
 
+
+
+
 /* GET users listing. */
 router.get('/', function(req, res) {
     res.render('index');
 });
 
 router.get('/account', isLoggedIn, function(req, res) {
+
     res.render('profile.ejs', {
         user: req.user // get the user out of session and pass to template
     });
 });
 
-// var query = {'fbid':req.user.fbid};
-
-// var insertion = {
-//   datas : req.body.userDatas
-// };
-
-// User.findOneAndUpdate(query, { $set: insertion }, {upsert:true}, function(err, doc){
-//     if (err) return res.send(500, { error: err });
-//     return res.send("succesfully saved");
-// });
-
-// console.log(req.user.fbid);
 
 router.post('/account', function(req, res) {
 
@@ -79,9 +71,67 @@ router.post('/account', function(req, res) {
 });
 
 
-router.get('/logout', function(req, res) {
-    req.logout();
-    res.redirect('/');
+
+
+      res.render('account', {
+          user : req.user // get the user out of session and pass to template
+      });
+  });
+
+router.post('/account', function(req, res){
+
+
+/// FRIENDS LOGIC
+  var insertionFriends = {
+    friends : req.body.userDatas.taggable_friends,
+    userId : req.user.id,
+  };
+
+  // console.log(req.body.userDatas.taggable_friends);
+  //console.log(insertionFriends);
+
+  var newFriends = new Friend(insertionFriends);
+
+  newFriends.save((err) => {
+   if (err) {
+     res.render('index', {
+       errorMessage: 'Something went wrong. Try again later.'
+     });
+     return;
+   }
+   res.redirect('/profile');
+   return;
+  });
+});
+
+router.get('/profile', isLoggedIn, function(req, res){
+  //var randomFriend ="lkjh";
+  Friend.findOne({ 'userId': req.user.id }, (err, friends) => {
+    if (err) {
+      res.render('index');
+  return;
+    }
+    var friends = friends.friends;
+    var randomFriend = friends[Math.floor(Math.random()*friends.length)]
+    console.log(randomFriend);
+    return randomFriend;
+  });
+//////////////////////////////////////::
+
+//////////////////////////////////////:::::::
+
+
+  res.render('profile', { friend : randomFriend});
+});
+
+
+
+
+
+router.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+
 });
 
 /////////////////////////////////////
