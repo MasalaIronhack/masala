@@ -6,7 +6,7 @@ var TasteKidSchema = new mongoose.Schema(
      books: [String],
      movies: [String],
      games: [String],
-     user: { type: Schema.Types.ObjectId, ref: 'User' },
+     user: String,
    }
  );
 
