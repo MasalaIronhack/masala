@@ -6,13 +6,18 @@ var express = require('express');
 var router = express.Router();
 const passport = require('passport');
 
+
+
+
 /* GET users listing. */
 router.get('/', function(req, res){
   res.render('index');
 });
 
 router.get('/account', isLoggedIn, function(req, res) {
-      res.render('profile.ejs', {
+
+
+      res.render('account', {
           user : req.user // get the user out of session and pass to template
       });
   });
@@ -23,6 +28,7 @@ router.post('/account', function(req, res){
 /// FRIENDS LOGIC
   var insertionFriends = {
     friends : req.body.userDatas.taggable_friends,
+    userId : req.user.id,
   };
 
   // console.log(req.body.userDatas.taggable_friends);
@@ -37,10 +43,34 @@ router.post('/account', function(req, res){
      });
      return;
    }
-   res.redirect('/');
+   res.redirect('/profile');
    return;
   });
 });
+
+router.get('/profile', isLoggedIn, function(req, res){
+  //var randomFriend ="lkjh";
+  Friend.findOne({ 'userId': req.user.id }, (err, friends) => {
+    if (err) {
+      res.render('index');
+  return;
+    }
+    var friends = friends.friends;
+    var randomFriend = friends[Math.floor(Math.random()*friends.length)]
+    console.log(randomFriend);
+    return randomFriend;
+  });
+//////////////////////////////////////::
+
+//////////////////////////////////////:::::::
+
+
+  res.render('profile', { friend : randomFriend});
+});
+
+
+
+
 
 router.get('/logout', function(req, res){
   req.logout();
