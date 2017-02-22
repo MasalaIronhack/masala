@@ -78,6 +78,20 @@ router.post('/account', function(req, res) {
 
 });
 
+router.get('/profile', isLoggedIn, function(req, res){
+ //var randomFriend ="lkjh";
+ Friend.findOne({ 'userId': req.user.id }, (err, friends) => {
+   if (err) {
+     res.render('index');
+ return;
+   }
+   var friends = friends.friends;
+   var randomFriend = friends[Math.floor(Math.random()*friends.length)]
+   console.log(randomFriend);
+   return randomFriend;
+ });
+ res.render('profile', { friend : randomFriend});
+});
 
 router.get('/logout', function(req, res) {
     req.logout();

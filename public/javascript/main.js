@@ -110,10 +110,8 @@ function getTasteKidAPIResults(searchTerm, searchType) {
         success: function(response) {
             console.log(response);
             const newCharacterHtml = `
-    <li>
-      <h3> ${response} </h3>
-    </li>
-  `;
+            <h1> ${response} </h1>
+            `;
 
             $('#characters-list').append(newCharacterHtml);
 
@@ -123,7 +121,6 @@ function getTasteKidAPIResults(searchTerm, searchType) {
         }
     });
 }
-////////////TasteKid////////////
 
 ////////////Functions init////////////
 $(document).ready(function() {
