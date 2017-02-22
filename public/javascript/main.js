@@ -1,5 +1,5 @@
 //require('dotenv').config();
-var user_token = "EAAMSMZCF0V70BAHeZBwggC5hVstOZAXikUaZCgUcZCIu9bzj2iYfeQrwgg9gsX5AUbJLYlaWpamdIGhBKaJHZBxiWZAMaZCENciKLiNWVIyi9ZCCI3gdc1RZAZCQZBvvrAVZAr1d0sfCeyO9BSfXLqf2WlnmfIzIYjqDJQrUth9jkGPqhmsVZCa8mIn2T3"
+var user_token = "EAAMSMZCF0V70BABLzaUfWd2YUUJskCqLb8MjKm7MxVU8e5ttvhFEVCZCwTxSCtc2ZBFwlHXZBqCAUEwfMq4zpGgfmBLx97BZAe7ZAWAX63MMlU7YwbvAjkdvSSjh4E3duq6oI7mipkbZAZBIZB8jaTdiQYZBmx8QgI1lZAPw1G8nn5MQm5pOUvZATsSg"
 function showFeedback (postResponse) {
   console.log('post success');
   console.log(postResponse);
@@ -45,7 +45,7 @@ function getFBData () {
          "access_token" :user_token
         },
             function(response) {
-
+              console.log(response);
               var locationID = response.location.id;
               var coordinates= {};
 /////////////////Second request to get user location
