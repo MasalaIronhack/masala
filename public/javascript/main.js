@@ -1,13 +1,11 @@
 //require('dotenv').config();
-var user_token = "EAAMSMZCF0V70BAJqBesA71FeQ7IgDPp6e7XUH1i8NWzoYN3e9fRIFUHpKwpGDzt9kQuDtz2O4NMCclnduYsZCT0CUwjSuVFka8DLZBZCzt4wDkUlX9lYAvQcBFXRzrUHebd8PKbNnF0dBMZBxs7LHDSaTZBj3g8aZCmLqg4nuextc7KhZAVEZByLV"
+var user_token = "EAAMSMZCF0V70BAMH5ai3ZBQo963ZC4wax4C8HmfbHrG8uaxs6ZCo4O260CeZCYYSFqugZAtZAP0rOVCHrdYPIdBhJgih1h1m6SXCvJoixqSRayj3BVdL8bdPVZCMSBoYOfUb1G48nc3lTzKLseBWUG5jgq0JMaK5ZArJ88gEM3NCIKcL4AemZAkHIf"
 
 function showFeedback(postResponse) {
     console.log('post success');
-    console.log(postResponse);
 }
 
 function handleError(err) {
-    console.log('Oh no! Error:');
     console.log(err);
 }
 
@@ -15,7 +13,7 @@ var sortedDatas = {};
 
 function sortDatas(obj, coord) {
 
-    sortedDatas.books = obj.books.data.map((book) => book.name);
+    sortedDatas.books = obj.books.data.map((book) => bo ok.name);
     sortedDatas.movies = obj.movies.data.map((movie) => movie.name);
     sortedDatas.likes = obj.likes.data.map((like) => like.name);
     sortedDatas.events = obj.events.data.map((event) => event.name);
