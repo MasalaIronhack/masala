@@ -41,6 +41,7 @@ function getFBData () {
   ////////////////////////////First request to get user datas
   FB.api('/me',
          'GET',
+
         {"fields":"music,books,likes,events,movies,television,games,friendlists,taggable_friends,location",
          "access_token" :user_token
         },

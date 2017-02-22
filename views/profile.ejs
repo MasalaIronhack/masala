@@ -4,19 +4,65 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-   <script src="http://connect.facebook.net/en_US/all.js"></script>
+  <script src="http://connect.facebook.net/en_US/all.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="javascript/main.js" type="text/javascript"></script>
 
-
+  <link rel='stylesheet' href='/bootstrap/dist/css/bootstrap.min.css' />
+  <link rel='stylesheet' href='/stylesheets/style-profile.css' />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400" rel="stylesheet">
+  <title>Wellcome "name", Masala</title>
 </head>
 <body>
-  <p> Hello  <p>
   <form action="/account" method="POST">
-    
-
-  <button type="submit">Send datas</button>
+  <button type="submit" class="manu-button">Send datas</button>
   </form>
+
+  <nav class="navbar navbar-default">
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <a class="navbar-brand" href="#">
+                  <img alt="Brand" src="/images/logo@3x.png">
+              </a>
+          </div>
+          <ul class="nav navbar-nav">
+              <li><button type="button" class="btn btn-default navbar-btn sign-in">Settings</button></li>
+              <li><button type="button" class="btn btn-default navbar-btn log-in"><a href="">Logout</a></button>
+              </li>
+          </ul>
+  </nav>
+
+  <!-- JUMBOTRON MEET UP-->
+  <div class="jumbotron">
+      <div class="container-fluid meetup">
+        <h1>Meetup event name</h1>
+          <p>Meetup description exerp</p>
+          <p><a class="btn btn-primary btn-lg main-content-btn" href="#" role="button">Learn more</a></p>
+      </div>
+  </div>
+
+  <!-- JUMBOTRON TASTES-->
+  <div class="jumbotron">
+      <div class="container-fluid interests">
+        <h1>Recomended to you</h1>
+          <p>Book info</p>
+          <p><a class="btn btn-primary btn-lg main-content-btn" href="#" role="button">Learn more</a></p>
+      </div>
+  </div>
+
+  <!-- JUMBOTRON FRIENDS-->
+  <div class="jumbotron">
+      <div class="container-fluid friends">
+        <h1>Facebook friend's name</h1>
+          <p>Random Call, send email, invite... etc</p>
+          <p><a class="btn btn-primary btn-lg main-content-btn" href="#" role="button">Learn more</a></p>
+      </div>
+  </div>
+  <footer>
+  <div class="row footer-margin">
+  <div class="col-md-6 col-sm-6 col-xs-6"><p>Random curated propousals to spice up your life.</p></div>
+  <div class="col-md-6 col-sm-6 col-xs-6"><img alt="Brand" src="/images/logo@3x.png"></div>
+  </div>
+  </footer>
 </body>
 </html>

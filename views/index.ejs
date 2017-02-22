@@ -6,20 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src='/javascript/front_animations.js'></script>
     <link rel='stylesheet' href='/bootstrap/dist/css/bootstrap.min.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script type="text/css" src="/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script type="text/css" src="/jquery/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400" rel="stylesheet">
     <title>Masala</title>
 </head>
-
 <body>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">
-                    <img alt="Brand" src="/images/logo.png">
+                    <img alt="Brand" src="/images/logo@3x.png">
                 </a>
             </div>
             <ul class="nav navbar-nav">
@@ -29,14 +28,42 @@
             </ul>
     </nav>
 
+    <!-- JUMBOTRON -->
     <div class="jumbotron">
-    <div class="container content-logo">
-      <img alt="Brand" src="/images/logo.png">
-      <p>random curated propousals to spice up your life.</p>
+        <div class="container content-logo">
+            <img alt="Decorative Box" class="box-decor" src="/images/box@3x.png">
+            <img alt="Decorative elements" class="elements-decor" src="/images/decor@3x.png">
+            <img alt="Brand" src="/images/logo@3x.png">
+            <p>random curated propousals to spice up your life.</p>
+            <a href="#myAnchor" rel="" id="anchor1" class="anchorLink hvr-grow-shadow"><button type="button" class="btn btn-default">KNOW MORE</button></a>
+        </div>
+        <a name="myAnchor" id="myAnchor">
     </div>
-  </div>
-  <!-- <button type="button" class="btn">Click me!</button>
-<p class="text">Replace me!!</p> -->
+
+    <!-- CONTENT -->
+<div class="row main-content">
+    <div class="col-md-2 col-sm-2 col-xs-2 box-decor-2"><img alt="Decorative Box" src="/images/group7@3x.png"></div>
+    <div class="col-md-4 main-content-left">
+      <h2>Explore what you like.</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam egestas vehicula arcu vel sollicitudin. Nulla turpis leo, volutpat nec luctus sit amet, gravida sed nisi. Integer ullamcorper ornare dolor et placerat.</p>
+      <h2>Redefine your network.</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam egestas vehicula arcu vel sollicitudin. Nulla turpis leo, volutpat nec luctus sit amet, gravida sed nisi. Integer ullamcorper ornare dolor et placerat.</p>
+    </div>
+    <div class="col-md-4 main-content-right">
+      <h2>Join the unexpexted.</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam egestas vehicula arcu vel sollicitudin. Nulla turpis leo, volutpat nec luctus sit amet, gravida sed nisi. Integer ullamcorper ornare dolor et placerat.</p>
+      <h2>Sign in with facebook,</h2>
+      <p>We need to retrieve some info from your facebook account to make our magic.</p>
+        <button type="button" class="btn btn-default main-content-btn hvr-grow-shadow">SPICE ME!</button>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+<footer>
+<div class="row">
+<div class="col-md-6 col-sm-6 col-xs-6"><p>Random curated propousals to spice up your life.</p></div>
+<div class="col-md-6 col-sm-6 col-xs-6"><img alt="Brand" src="/images/logo@3x.png"></div>
+</div>
+</footer>
 </body>
 
 </html>
