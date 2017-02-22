@@ -50,6 +50,7 @@ router.post('/account', function(req, res){
      return;
    }
    res.redirect('/');
+   return
   });
 
 //// USER DATA LOGIC
