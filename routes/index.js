@@ -18,25 +18,36 @@ router.get('/account', isLoggedIn, function(req, res) {
       });
   });
 
-
-
-
-
-
-
-
-
 router.post('/account', function(req, res){
 var query = {'fbid':req.user.fbid};
 
-var insertion = {
-  datas : req.body.userDatas
-}
-User.findOneAndUpdate(query, { $set: insertion }, {upsert:true}, function(err, doc){
+/*User.findOneAndUpdate(query, { $set: insertion }, {upsert:true}, function(err, doc){
     if (err) return res.send(500, { error: err });
     return res.send("succesfully saved");
+
+
+});*/
+var insertion = {
+  content : req.body.userDatas,
+  user : req.user
+}
+
+
+var newDatas = new Data(insertion);
+
+newDatas.save((err) => {
+  if (err) {
+    res.render('index', {
+      errorMessage: 'Something went wrong. Try again later.'
+    });
+    return;
+  }
+
+  res.redirect('/');
 });
 
+
+*/
 
   console.log(req.user.fbid);
   console.log(req.body.userDatas);
