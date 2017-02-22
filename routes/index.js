@@ -1,7 +1,8 @@
 require('dotenv').config();
-const bodyParser           = require('body-parser');
-const Friend                 = require('../models/friends');
-const Data                 = require('../models/data');
+const bodyParser = require('body-parser');
+const Friend = require('../models/friends');
+const Data = require('../models/data');
+const TasteKid = require('../models/tastekid');
 var express = require('express');
 var router = express.Router();
 const passport = require('passport');
@@ -10,11 +11,66 @@ const passport = require('passport');
 
 
 /* GET users listing. */
-router.get('/', function(req, res){
-  res.render('index');
+router.get('/', function(req, res) {
+    res.render('index');
 });
 
 router.get('/account', isLoggedIn, function(req, res) {
+
+    res.render('profile.ejs', {
+        user: req.user // get the user out of session and pass to template
+    });
+});
+
+
+router.post('/account', function(req, res) {
+
+    /// FRIENDS REQUEST
+    var insertionFriends = {
+        friends: req.body.userDatas.taggable_friends,
+        user: req.user
+    };
+
+    // TASTEKID REQUEST
+
+    var insertionTastekid = {
+        books: req.body.userDatas.books,
+        movies: req.body.userDatas.movies,
+        games: req.body.userDatas.games,
+        user: req.user
+    };
+
+
+    var newFriends = new Friend(insertionFriends);
+    var newTasteKid = new TasteKid(insertionTastekid);
+
+    console.log(insertionTastekid);
+
+    newFriends.save((err) => {
+        if (err) {
+            res.render('index', {
+                errorMessage: 'Something went wrong. Try again later.'
+            });
+            return;
+        }
+        return;
+    });
+
+    newTasteKid.save((err) => {
+        if (err) {
+            res.render('index', {
+                errorMessage: 'Something went wrong. Try again later.'
+            });
+            return;
+        }
+        res.redirect('/');
+        return;
+    });
+
+
+});
+
+
 
 
       res.render('account', {
@@ -75,6 +131,7 @@ router.get('/profile', isLoggedIn, function(req, res){
 router.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
+
 });
 
 /////////////////////////////////////
