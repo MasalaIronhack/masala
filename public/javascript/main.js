@@ -1,5 +1,5 @@
 //require('dotenv').config();
-var user_token = "EAAMSMZCF0V70BADcSe73Y48NlSeLpGYIdzZBmWekFowLRjFoifqeyavpKt4mUrraQ2WhsQZCZCyulb3PCgBsDzpAdyRrum9uczPJ5j9dbvi8gCMEkGX6cQHg8Mv8r7FbuBPiIuj8XnE6ecL1NN7q2Nfnzp0tJBaXNWTR75MTwctFJmaz1MHO"
+var user_token = "EAAMSMZCF0V70BAOTTwN03WenYPzkmos6CwLGsilrB7pfqVFbaBbZCTeeF0jR1ocpf5OTBp9wSqlk0sZAtCmiDuYQym9L3CChjZCdf1ZArwwSOFHKBC1wK10OQ1B8dzIwOFkLlOiLlVgsJMbLaB71oU2JqbnOaXM6F6iyHaXud17ovGl0FZBWfP"
 function showFeedback (postResponse) {
   console.log('post success');
 }
@@ -122,6 +122,6 @@ function getTasteKidAPIResults(randomTasteKid, searchType) {
 $(document).ready(function() {
 
     getFBData();
-    getTasteKidAPIResults('Titanic');
+    getTasteKidAPIResults(randomTasteKid);
 
 });
