@@ -122,6 +122,6 @@ function getTasteKidAPIResults(randomTasteKid, searchType) {
 $(document).ready(function() {
 
     getFBData();
-    getTasteKidAPIResults('Titanic');
+    getTasteKidAPIResults(randomTasteKid);
 
 });
