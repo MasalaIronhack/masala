@@ -59,6 +59,7 @@ a:active {
     color: #FFFBFB;
 }
 
+
 .sign-in, .log-in {
     align: left;
     width: 61px;
@@ -88,6 +89,10 @@ a:active {
  color: #171717;
 }
 
+.meetup p {
+  color: white;
+}
+
 .meetup:hover{
   opacity: 0.5;
 }
@@ -106,6 +111,7 @@ a:active {
   background-color: #fff;
   border: 2px solid #FFFBFB;
   border-radius: 100px;
+  margin-top: 10px;
   padding: 10px 40px 20px 40px;
 }
 
@@ -137,6 +143,11 @@ a:active {
 
 .interests:hover {
   opacity: 0.5;
+}
+
+.interests h3 {
+  color: #fff;
+  margin-top: 5px;
 }
 
 .jumbotron p {

@@ -152,7 +152,8 @@ function getMeetUpEvents() {
             console.log(eventUrl);
         });
 }
-getMeetUpEvents();
+
+  getMeetUpEvents();
 
 ////////////////////////
 
