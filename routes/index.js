@@ -7,6 +7,9 @@ const TasteKid = require('../models/tastekid');
 var express = require('express');
 var router = express.Router();
 const passport = require('passport');
+const meetup = require('meetup-api')({
+    key: '406044782c42396269125310632a6519'
+});
 
 /* GET users listing. */
 
@@ -133,5 +136,26 @@ function isLoggedIn(req, res, next) {
     // if they aren't redirect them to the home page
     res.redirect('/');
 }
+
+/////////MeetUp//////////
+// With text and latitude/longitude parameters
+
+function getMeetUpEvents() {
+    meetup.getOpenEvents({
+            'text': 'javascript',
+            'lon': '-73.979431',
+            'lat': '40.752125',
+            'page': '1'
+        },
+        function(err, events) {
+            var eventName = events.results[0].name;
+            console.log(eventName);
+            var eventUrl = events.results[0].event_url;
+            console.log(eventUrl);
+        });
+}
+getMeetUpEvents();
+
+////////////////////////
 
 module.exports = router;
