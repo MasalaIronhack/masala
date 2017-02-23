@@ -33,6 +33,7 @@
   <div class="jumbotron">
       <div class="container-fluid meetup">
         <h1>Meetup event name</h1>
+        <h1></h1>
           <p>Meetup description exerp</p>
           <p><a class="btn btn-primary btn-lg main-content-btn" href="#" role="button">Learn more</a></p>
       </div>
@@ -41,6 +42,8 @@
   <!-- JUMBOTRON TASTES-->
   <div class="jumbotron">
       <div class="container-fluid interests">
+        <h1 id="TK"></h1>
+          <p>Book info</p>
         <h1></h1>
           <p>Books :<% books.forEach((item) => {  %> <%=item%> <% }) %>  and movies :
             <% movies.forEach((item) => { %> <%=item%> <%}) %> </p>
@@ -63,4 +66,7 @@
   </div>
   </footer>
 </body>
+<script type="text/javascript">
+ var randomTasteKid = [<%- friend %>];
+ </script>
 </html>

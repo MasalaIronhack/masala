@@ -108,22 +108,6 @@ app.use(express.static(path.join(__dirname, "bower_components")));
 
 app.use('/', auth);
 
-/////////MeetUp//////////
-// With text and latitude/longitude parameters
-function getMeetUpEvents() {
-    meetup.getOpenEvents({
-            'text': 'Star Wars',
-            'lon': '-73.979431',
-            'lat': '40.752125',
-            'page': '1'
-        },
-        function(err, events) {
-            //console.log(events);
-        });
-}
-getMeetUpEvents();
-////////////////////////
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
