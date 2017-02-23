@@ -14,8 +14,8 @@ var UserSchema = new mongoose.Schema({
        fbid : {
          type : Number
        },
-       datas : {
-          any: [Schema.Types.Mixed] }
+
+
    });
 
 

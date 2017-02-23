@@ -25,23 +25,7 @@ router.get('/account', isLoggedIn, function(req, res) {
 
 });
 
-// var query = {'fbid':req.user.fbid};
 
-// var insertion = {
-
-//   datas : req.body.userDatas
-
-// };
-
-// User.findOneAndUpdate(query, { $set: insertion }, {upsert:true}, function(err, doc){
-
-//     if (err) return res.send(500, { error: err });
-
-//     return res.send("succesfully saved");
-
-// });
-
-// console.log(req.user.fbid);
 
 router.post('/account', function(req, res) {
 
@@ -96,24 +80,38 @@ router.get('/profile',  function(req, res){
  //var randomFriend ="lkjh";
 
  Friend.findOne({ 'userId': req.user.fbid }, (err, friends) => {
-   var randomFriend;
+   //var randomFriend;
    if (err) {
      res.render('index');
- //return;
    }
     else{
    var friendLists = friends.friends;
    var randomFriend = friendLists[Math.floor(Math.random()*friendLists.length)]
-   console.log(randomFriend);
-   res.render('profile', {friend : randomFriend});
-
+   res.locals.randomFriend = randomFriend;
     }
-        //TasteKid.findOne
+
+TasteKid.findOne({ 'userId': req.user.fbid}, (err,interests)=>{
+    if (err) {
+      res.render('index');
+            }
+    else {
+          var movies = interests.movies;
+          var books = interests.books;
+          res.locals.movies = movies;
+          res.locals.books = books;
+          res.render('profile', {
+            friend : res.locals.randomFriend,
+            books  : books,
+            movies : movies,
+          });
+        }
+      });
+    //console.log('locals :'+res.locals.books);
+
+
     //console.log(randomFriend);
  });
 
-
-// console.log(randomFriend);
 });
 
 router.get('/settings', function(req, res) {
