@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="http://connect.facebook.net/en_US/all.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="javascript/main.js" type="text/javascript"></script>
+
 
   <link rel='stylesheet' href='/bootstrap/dist/css/bootstrap.min.css' />
   <link rel='stylesheet' href='/stylesheets/style-profile.css' />
@@ -14,6 +14,8 @@
   <title>Wellcome test, Masala</title>
 </head>
 <body>
+
+
 
   <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -32,8 +34,9 @@
   <!-- JUMBOTRON MEET UP-->
   <div class="jumbotron">
       <div class="container-fluid meetup">
-        <h1>Meetup event name</h1>
-          <p>Meetup description exerp</p>
+        <p>What about attending:</p>
+          <button class=btn-jumbotron><h1><%=books %></h1></button>
+        <h1></h1>
           <p><a class="btn btn-primary btn-lg main-content-btn" href="#" role="button">Learn more</a></p>
       </div>
   </div>
@@ -41,18 +44,21 @@
   <!-- JUMBOTRON TASTES-->
   <div class="jumbotron">
       <div class="container-fluid interests">
-        <h1></h1>
-          <p> <%= friend + book + movie + music + latitude + longitude + eventName + eventUrl %> </p>
-          <p><a class="btn btn-primary btn-lg main-content-btn" href="#" role="button">Learn more</a></p>
+
+        <p><button class=main-content-btn-taste>If you liked
+          <h3 id="passBooksToMain"><%=books %></h3>you may like:</button></p>
+        <button class=btn-jumbotron><h1 id="TK"></h1></button>
+          <p><a class="btn btn-primary btn-lg main-content-btn" href="https://en.wikipedia.org/wiki/Special:Search/" role="button">Learn more</a></p>
+
       </div>
   </div>
 
   <!-- JUMBOTRON FRIENDS-->
   <div class="jumbotron">
       <div class="container-fluid friends">
-        <h1><%=friend %></h1>
-          <p>Random Call, send email, invite... etc</p>
-          <p><a class="btn btn-primary btn-lg main-content-btn" href="#" role="button">Learn more</a></p>
+          <p>Let's get back in contact with:</p>
+          <button class=btn-jumbotron><h1><%=friend %></h1></button>
+          <!-- <p><a class="btn btn-primary btn-lg main-content-btn" href="http://facebook.com/<%=friend %>" role="button">Learn more</a></p> -->
       </div>
   </div>
   <footer>
@@ -62,4 +68,11 @@
   </div>
   </footer>
 </body>
+  <script src="javascript/main.js" type="text/javascript"></script>
+<script type="text/javascript">
+ var foo = document.getElementById('passBooksToMain').innerHTML;
+ var taste = document.getElementById('TK').innerHTML;
+ console.log(taste);
+ var randomTasteKid = foo;
+ </script>
 </html>

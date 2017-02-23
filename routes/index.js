@@ -89,7 +89,6 @@ router.get('/profile', function(req, res) {
         } else {
             var friendLists = friends.friends;
             var randomFriend = friendLists[Math.floor(Math.random() * friendLists.length)]
-            res.locals.randomFriend = randomFriend;
         }
 
         TasteKid.findOne({
