@@ -206,3 +206,9 @@ footer img {
   margin-left: 0px;
   width: 100%;
 }
+
+.form-group {
+  height : 800px;
+  background: grey;
+
+}
