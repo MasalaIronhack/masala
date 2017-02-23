@@ -22,23 +22,7 @@ router.get('/account', isLoggedIn, function(req, res) {
 
 });
 
-// var query = {'fbid':req.user.fbid};
 
-// var insertion = {
-
-//   datas : req.body.userDatas
-
-// };
-
-// User.findOneAndUpdate(query, { $set: insertion }, {upsert:true}, function(err, doc){
-
-//     if (err) return res.send(500, { error: err });
-
-//     return res.send("succesfully saved");
-
-// });
-
-// console.log(req.user.fbid);
 
 router.post('/account', function(req, res) {
 
@@ -105,12 +89,12 @@ router.get('/profile',  function(req, res){
    res.render('profile', {friend : randomFriend});
 
     }
-        //TasteKid.findOne
+
+
+
     //console.log(randomFriend);
  });
 
-
-// console.log(randomFriend);
 });
 
 router.get('/settings', function(req, res) {
