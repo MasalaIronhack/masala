@@ -65,9 +65,10 @@ router.post('/account', function(req, res) {
             });
             return;
         }
-        res.redirect('/');
         return;
     });
+    res.redirect('/profile');
+
 });
 
 router.get('/profile', isLoggedIn, function(req, res){
@@ -85,6 +86,11 @@ router.get('/profile', isLoggedIn, function(req, res){
    res.render('profile', {friend : randomFriend});
     }
  });
+});
+
+router.get('/settings', function(req, res) {
+    res.render('settings');
+
 });
 
 router.get('/logout', function(req, res) {
