@@ -47,8 +47,7 @@ router.post('/account', function(req, res) {
     var insertionFriends = {
 
         friends: req.body.userDatas.taggable_friends,
-
-        user: req.user
+        userId: req.user.fbid,
 
     };
 
@@ -93,7 +92,7 @@ router.post('/account', function(req, res) {
 router.get('/profile',  function(req, res){
  //var randomFriend ="lkjh";
 
- Friend.findOne({ 'userId': req.user.id }, (err, friends) => {
+ Friend.findOne({ 'userId': req.user.fbid }, (err, friends) => {
    var randomFriend;
    if (err) {
      res.render('index');
@@ -106,7 +105,7 @@ router.get('/profile',  function(req, res){
    res.render('profile', {friend : randomFriend});
 
     }
-    
+        //TasteKid.findOne
     //console.log(randomFriend);
  });
 
