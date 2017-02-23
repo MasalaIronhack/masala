@@ -1,16 +1,11 @@
 //require('dotenv').config();
-var user_token = "EAAMSMZCF0V70BAHD7ZCHgfIYhFA0pEb7WC8cyjxZCPiAjwfdNn3lu9KDdrRT9mJSgFZBIBR1MrMuMqPJZAfuPjphocZAqrZCb9pwVZCs22iOVq98ei67C1rjhTnIqHcWGUT67PwjtuVrPgBZCBduagen0fXvgly6xizlBhrBRrKg6QSESSv5bn5VM";
-
-function showFeedback(postResponse) {
-    console.log('post success');
-}
-
+var user_token = "EAAMSMZCF0V70BAMH5ai3ZBQo963ZC4wax4C8HmfbHrG8uaxs6ZCo4O260CeZCYYSFqugZAtZAP0rOVCHrdYPIdBhJgih1h1m6SXCvJoixqSRayj3BVdL8bdPVZCMSBoYOfUb1G48nc3lTzKLseBWUG5jgq0JMaK5ZArJ88gEM3NCIKcL4AemZAkHIf"
 function showFeedback (postResponse) {
   console.log('post success');
-
 }
 
 function handleError(err) {
+    console.log('Oh no! Error:');
     console.log(err);
 }
 
@@ -18,7 +13,7 @@ var sortedDatas = {};
 
 function sortDatas(obj, coord) {
 
-    sortedDatas.books = obj.books.data.map((book) => bo ok.name);
+    sortedDatas.books = obj.books.data.map((book) => book.name);
     sortedDatas.movies = obj.movies.data.map((movie) => movie.name);
     sortedDatas.likes = obj.likes.data.map((like) => like.name);
     sortedDatas.events = obj.events.data.map((event) => event.name);
@@ -113,8 +108,10 @@ function getTasteKidAPIResults(searchTerm, searchType) {
         success: function(response) {
             console.log(response);
             const newCharacterHtml = `
-            <h1> ${response} </h1>
-            `;
+    <li>
+      <h3> ${response} </h3>
+    </li>
+  `;
 
             $('#characters-list').append(newCharacterHtml);
 
@@ -124,6 +121,7 @@ function getTasteKidAPIResults(searchTerm, searchType) {
         }
     });
 }
+////////////TasteKid////////////
 
 ////////////Functions init////////////
 $(document).ready(function() {

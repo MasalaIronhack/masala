@@ -22,6 +22,24 @@ router.get('/account', isLoggedIn, function(req, res) {
 
 });
 
+// var query = {'fbid':req.user.fbid};
+
+// var insertion = {
+
+//   datas : req.body.userDatas
+
+// };
+
+// User.findOneAndUpdate(query, { $set: insertion }, {upsert:true}, function(err, doc){
+
+//     if (err) return res.send(500, { error: err });
+
+//     return res.send("succesfully saved");
+
+// });
+
+// console.log(req.user.fbid);
+
 router.post('/account', function(req, res) {
 
     /// FRIENDS REQUEST
@@ -29,8 +47,7 @@ router.post('/account', function(req, res) {
     var insertionFriends = {
 
         friends: req.body.userDatas.taggable_friends,
-
-        user: req.user
+        userId: req.user.fbid,
 
     };
 
@@ -47,6 +64,8 @@ router.post('/account', function(req, res) {
     var newFriends = new Friend(insertionFriends);
 
     var newTasteKid = new TasteKid(insertionTastekid);
+
+    console.log(insertionTastekid);
 
     newFriends.save((err) => {
         if (err) {
@@ -65,15 +84,15 @@ router.post('/account', function(req, res) {
             });
             return;
         }
+        res.redirect('/profile');
         return;
     });
-    res.redirect('/profile');
-
 });
 
-router.get('/profile', isLoggedIn, function(req, res){
+router.get('/profile',  function(req, res){
+ //var randomFriend ="lkjh";
 
- Friend.findOne({ 'userId': req.user.id }, (err, friends) => {
+ Friend.findOne({ 'userId': req.user.fbid }, (err, friends) => {
    var randomFriend;
    if (err) {
      res.render('index');
@@ -84,8 +103,14 @@ router.get('/profile', isLoggedIn, function(req, res){
    var randomFriend = friendLists[Math.floor(Math.random()*friendLists.length)]
    console.log(randomFriend);
    res.render('profile', {friend : randomFriend});
+
     }
+        //TasteKid.findOne
+    //console.log(randomFriend);
  });
+
+
+// console.log(randomFriend);
 });
 
 router.get('/settings', function(req, res) {
