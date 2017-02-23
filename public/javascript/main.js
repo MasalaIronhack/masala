@@ -89,12 +89,12 @@ function getFBData() {
 // music, movies, shows, books, authors, games.
 // If not specified, the results can have mixed types.
 
-function getTasteKidAPIResults(searchTerm, searchType) {
+function getTasteKidAPIResults(randomTasteKid, searchType) {
 
     var params = {
         k: '260998-Masala-6RJUMGXP',
         type: searchType,
-        q: searchTerm,
+        q: randomTasteKid,
         info: 1,
         limit: 10,
     };
@@ -106,14 +106,10 @@ function getTasteKidAPIResults(searchTerm, searchType) {
         data: params,
         type: 'GET',
         success: function(response) {
-            console.log(response);
-            const newCharacterHtml = `
-    <li>
-      <h3> ${response} </h3>
-    </li>
-  `;
+            console.log(response.Similar.Results[0].Name);
+            const newTKrecomendation = `${response.Similar.Results[0].Name}`;
 
-            $('#characters-list').append(newCharacterHtml);
+            $('#TK').append(newTKrecomendation);
 
         },
         error: function(response) {
