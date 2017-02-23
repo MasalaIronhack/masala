@@ -152,10 +152,7 @@ router.get('/profile', function(req, res) {
                 getMeetUpEvents( randomMovie , latitude , longitude);
             }
         });
-        //console.log('locals :'+res.locals.books);
 
-
-        //console.log(randomFriend);
     });
 
 });
