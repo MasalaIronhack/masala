@@ -239,6 +239,20 @@ a:active {
     margin-top: 5%;
 }
 
+.main-content-btn-taste {
+    background-color: #171717;
+    font-family: Montserrat;
+    font-weight: 300;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 4px;
+    color: #FFFBFB;
+    border-radius: 100px;
+    border: none;
+    padding: 10px 30px 10px 30px;
+    margin-top: 5%;
+}
+
 .main-content-btn:hover {
     background-color: #FFFBFB;
     color: #171717;
