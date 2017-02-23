@@ -59,6 +59,7 @@ a:active {
     color: #FFFBFB;
 }
 
+
 .sign-in, .log-in {
     align: left;
     width: 61px;
@@ -85,6 +86,11 @@ a:active {
   padding-top: 100px;
   padding-bottom: 100px;
  z-index: -1;
+ color: #171717;
+}
+
+.meetup p {
+  color: white;
 }
 
 .meetup:hover{
@@ -98,6 +104,21 @@ a:active {
   padding-top: 100px;
   padding-bottom: 100px;
  z-index: -1;
+ color: #171717;
+}
+
+.btn-jumbotron {
+  background-color: #fff;
+  border: 2px solid #FFFBFB;
+  border-radius: 100px;
+  margin-top: 10px;
+  padding: 10px 40px 20px 40px;
+}
+
+.friends h1 {
+  background-color: #fff;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .friends:hover {
@@ -106,15 +127,27 @@ a:active {
 
 .interests {
   background: url('/images/85H.jpg') no-repeat center center;
- width: 100vw;
+  width: 100vw;
   background-size: cover;
   padding-top: 100px;
   padding-bottom: 100px;
-   z-index: -1;
+  z-index: -1;
+  color: #171717;
+}
+
+.interests h1 {
+  background-color: #fff;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .interests:hover {
   opacity: 0.5;
+}
+
+.interests h3 {
+  color: #fff;
+  margin-top: 5px;
 }
 
 .jumbotron p {
@@ -193,6 +226,20 @@ a:active {
 }
 
 .main-content-btn {
+    background-color: #171717;
+    font-family: Montserrat;
+    font-weight: 300;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 4px;
+    color: #FFFBFB;
+    border-radius: 100px;
+    border: none;
+    padding: 10px 30px 10px 30px;
+    margin-top: 5%;
+}
+
+.main-content-btn-taste {
     background-color: #171717;
     font-family: Montserrat;
     font-weight: 300;
