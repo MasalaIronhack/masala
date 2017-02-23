@@ -41,8 +41,9 @@
   <!-- JUMBOTRON TASTES-->
   <div class="jumbotron">
       <div class="container-fluid interests">
-        <h1><%=friend %></h1>
-          <p>Book info</p>
+        <h1></h1>
+          <p>Books :<% books.forEach((item) => {  %> <%=item%> <% }) %>  and movies :
+            <% movies.forEach((item) => { %> <%=item%> <%}) %> </p>
           <p><a class="btn btn-primary btn-lg main-content-btn" href="#" role="button">Learn more</a></p>
       </div>
   </div>
@@ -50,7 +51,7 @@
   <!-- JUMBOTRON FRIENDS-->
   <div class="jumbotron">
       <div class="container-fluid friends">
-        <h1>Facebook friend's name</h1>
+        <h1><%=friend %></h1>
           <p>Random Call, send email, invite... etc</p>
           <p><a class="btn btn-primary btn-lg main-content-btn" href="#" role="button">Learn more</a></p>
       </div>
