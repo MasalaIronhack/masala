@@ -20,10 +20,11 @@ function sortDatas(obj, coord) {
     sortedDatas.music = obj.music.data.map((mus) => mus.name);
     sortedDatas.taggable_friends = obj.taggable_friends.data.map((friend) => friend.name);
     sortedDatas.television = obj.television.data.map((tv) => tv.name);
-    sortedDatas.coordinates = coord;
+    sortedDatas.latitude = coord.latitude;
+    sortedDatas.longitude = coord.longitude;
 
 
-    console.log(sortedDatas);
+    console.log("sortdataLATinside ",coord.latitude);
     return sortedDatas;
 }
 
@@ -59,16 +60,15 @@ function getFBData() {
                 function(response) {
                     coordinates.latitude = response.location.latitude;
                     coordinates.longitude = response.location.longitude;
-                    //console.log(response);
                 });
 
-            console.log(response);
+             console.log("apiLocCall",coordinates);
 
-            sortDatas(response, coordinates);
             let obj = {
-                userDatas: sortedDatas
+                userDatas: sortDatas(response, coordinates),
+                locations: coordinates
             };
-
+            console.log("beforeAJAX",obj.userDatas.longitude)
             $.ajax({
                 type: "POST",
                 data: JSON.stringify(obj),

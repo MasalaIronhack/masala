@@ -20,9 +20,7 @@ const Data = require('./models/data');
 const session = require("express-session");
 const flash = require('connect-flash');
 const MongoStore = require("connect-mongo")(session);
-const meetup = require('meetup-api')({
-    key: '406044782c42396269125310632a6519'
-});
+const meetup = require('meetup-api')({key: '406044782c42396269125310632a6519'});
 const app = express();
 
 mongoose.connect('mongodb://localhost/masala');
