@@ -6,6 +6,7 @@ var TasteKidSchema = new mongoose.Schema(
      books: [String],
      movies: [String],
      games: [String],
+     music: [String],
      userId: String,
    }
  );

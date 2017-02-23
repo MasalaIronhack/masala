@@ -41,9 +41,12 @@ router.post('/account', function(req, res) {
         books: req.body.userDatas.books,
         movies: req.body.userDatas.movies,
         games: req.body.userDatas.games,
+        music: req.body.userDatas.music,
         userId: req.user.fbid,
 
+
     };
+    console.log('insertion' + req.body.userDatas)
 
     var newFriends = new Friend(insertionFriends);
 
@@ -73,41 +76,54 @@ router.post('/account', function(req, res) {
     });
 });
 
-router.get('/profile',  function(req, res){
- //var randomFriend ="lkjh";
+router.get('/profile', function(req, res) {
+    //var randomFriend ="lkjh";
 
- Friend.findOne({ 'userId': req.user.fbid }, (err, friends) => {
-   //var randomFriend;
-   if (err) {
-     res.render('index');
-   }
-    else{
-   var friendLists = friends.friends;
-   var randomFriend = friendLists[Math.floor(Math.random()*friendLists.length)]
-   res.locals.randomFriend = randomFriend;
-    }
-
-TasteKid.findOne({ 'userId': req.user.fbid}, (err,interests)=>{
-    if (err) {
-      res.render('index');
-            }
-    else {
-          var movies = interests.movies;
-          var books = interests.books;
-          res.locals.movies = movies;
-          res.locals.books = books;
-          res.render('profile', {
-            friend : res.locals.randomFriend,
-            books  : books,
-            movies : movies,
-          });
+    Friend.findOne({
+        'userId': req.user.fbid
+    }, (err, friends) => {
+        //var randomFriend;
+        if (err) {
+            res.render('index');
+        } else {
+            var friendLists = friends.friends;
+            var randomFriend = friendLists[Math.floor(Math.random() * friendLists.length)]
+            res.locals.randomFriend = randomFriend;
         }
-      });
-    //console.log('locals :'+res.locals.books);
+
+        TasteKid.findOne({
+            'userId': req.user.fbid
+        }, (err, interests) => {
+            if (err) {
+                res.render('index');
+            } else {
+                console.log('interests:' + interests)
+                var latitude = 40.4;
+                var longitude = -3.68333;
+                var movieList = interests.movies;
+                var randomMovie = movieList[Math.floor(Math.random() * movieList.length)];
+                var bookList = interests.books;
+                var randomBook = bookList[Math.floor(Math.random() * bookList.length)];
+                var musicList = interests.music;
+                var randomMusic = musicList[Math.floor(Math.random() * musicList.length)];
+
+                var context = {
+                    friend: res.locals.randomFriend,
+                    book: randomBook,
+                    movie: randomMovie,
+                    music: randomMusic,
+                    latitude: latitude,
+                    longitude: longitude,
+                }
+                console.log(context);
+                res.render('profile', context);
+            }
+        });
+        //console.log('locals :'+res.locals.books);
 
 
-    //console.log(randomFriend);
- });
+        //console.log(randomFriend);
+    });
 
 });
 

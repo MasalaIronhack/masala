@@ -1,5 +1,5 @@
 //require('dotenv').config();
-var user_token = "EAAMSMZCF0V70BADcSe73Y48NlSeLpGYIdzZBmWekFowLRjFoifqeyavpKt4mUrraQ2WhsQZCZCyulb3PCgBsDzpAdyRrum9uczPJ5j9dbvi8gCMEkGX6cQHg8Mv8r7FbuBPiIuj8XnE6ecL1NN7q2Nfnzp0tJBaXNWTR75MTwctFJmaz1MHO"
+var user_token = "EAAMSMZCF0V70BAGocWhSL75hsNluzppFuPzzQtadiMVwXRRBR82TXXa8OsutEX96KK678ffZAmWwv6ht4Woyvm8snyITHBbahGMGW3XdzwDK3V1OfYILZAKf87d6R4wiTJ1zTZAcdkUApz5K3MSGwJhQLFPWWg2NxL2PddMACcR0uGrRmuT1"
 function showFeedback (postResponse) {
   console.log('post success');
 }
@@ -20,10 +20,11 @@ function sortDatas(obj, coord) {
     sortedDatas.music = obj.music.data.map((mus) => mus.name);
     sortedDatas.taggable_friends = obj.taggable_friends.data.map((friend) => friend.name);
     sortedDatas.television = obj.television.data.map((tv) => tv.name);
-    sortedDatas.coordinates = coord;
+    sortedDatas.latitude = coord.latitude;
+    sortedDatas.longitude = coord.longitude;
 
 
-    console.log(sortedDatas);
+    console.log("sortdataLATinside ",coord.latitude);
     return sortedDatas;
 }
 
@@ -59,16 +60,15 @@ function getFBData() {
                 function(response) {
                     coordinates.latitude = response.location.latitude;
                     coordinates.longitude = response.location.longitude;
-                    //console.log(response);
                 });
 
-            console.log(response);
+             console.log("apiLocCall",coordinates);
 
-            sortDatas(response, coordinates);
             let obj = {
-                userDatas: sortedDatas
+                userDatas: sortDatas(response, coordinates),
+                locations: coordinates
             };
-
+            console.log("beforeAJAX",obj.userDatas.longitude)
             $.ajax({
                 type: "POST",
                 data: JSON.stringify(obj),
