@@ -85,13 +85,12 @@ router.post('/account', function(req, res) {
             });
             return;
         }
+        res.redirect('/profile');
         return;
     });
-    res.redirect('/profile');
-    
 });
 
-router.get('/profile', isLoggedIn, function(req, res){
+router.get('/profile',  function(req, res){
  //var randomFriend ="lkjh";
 
  Friend.findOne({ 'userId': req.user.id }, (err, friends) => {
@@ -107,6 +106,7 @@ router.get('/profile', isLoggedIn, function(req, res){
    res.render('profile', {friend : randomFriend});
 
     }
+    
     //console.log(randomFriend);
  });
 
