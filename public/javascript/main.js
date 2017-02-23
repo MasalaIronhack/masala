@@ -1,5 +1,5 @@
 //require('dotenv').config();
-var user_token = "EAAMSMZCF0V70BAGocWhSL75hsNluzppFuPzzQtadiMVwXRRBR82TXXa8OsutEX96KK678ffZAmWwv6ht4Woyvm8snyITHBbahGMGW3XdzwDK3V1OfYILZAKf87d6R4wiTJ1zTZAcdkUApz5K3MSGwJhQLFPWWg2NxL2PddMACcR0uGrRmuT1"
+var user_token = "EAAMSMZCF0V70BAOTTwN03WenYPzkmos6CwLGsilrB7pfqVFbaBbZCTeeF0jR1ocpf5OTBp9wSqlk0sZAtCmiDuYQym9L3CChjZCdf1ZArwwSOFHKBC1wK10OQ1B8dzIwOFkLlOiLlVgsJMbLaB71oU2JqbnOaXM6F6iyHaXud17ovGl0FZBWfP"
 function showFeedback (postResponse) {
   console.log('post success');
 }
