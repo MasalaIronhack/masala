@@ -83,7 +83,6 @@ router.get('/profile', isLoggedIn, function(req, res){
    var randomFriend = friendLists[Math.floor(Math.random()*friendLists.length)]
    console.log(randomFriend);
    res.render('profile', {friend : randomFriend});
-
     }
  });
 });
