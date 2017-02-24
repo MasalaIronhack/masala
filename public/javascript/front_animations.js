@@ -7,4 +7,10 @@ $(document).ready(function() {
             scrollTop: $($.attr(this, 'href')).offset().top
         }, 500);
     });
+
+    $('.progress .progress-bar').css("width",
+                function() {
+                    return $(this).attr("aria-valuenow") + "%";
+                }
+        );
 });
