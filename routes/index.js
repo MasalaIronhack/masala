@@ -73,9 +73,10 @@ router.post('/account', function(req, res) {
             });
             return;
         }
-        res.redirect('/profile');
+
         return;
     });
+      res.redirect('/profile');
 });
 
 router.get('/profile', function(req, res) {
@@ -90,7 +91,6 @@ router.get('/profile', function(req, res) {
         } else {
             var friendLists = friends.friends;
             var randomFriend = friendLists[Math.floor(Math.random() * friendLists.length)]
-            res.locals.randomFriend = randomFriend;
         }
 
         TasteKid.findOne({
@@ -121,10 +121,10 @@ router.get('/profile', function(req, res) {
                     longitude: longitude,
                 }
 
-            function getMeetUpEvents(random,latitude,longitude) {
+            function getMeetUpEvents(randomMovie,latitude,longitude) {
               var event = {};
                    meetup.getOpenEvents({
-                           'text': random,
+                           'text': randomMovie,
                            'lon': -3.68333,
                            'lat': 40.4,
                            'page': '1'
@@ -154,10 +154,7 @@ router.get('/profile', function(req, res) {
                 getMeetUpEvents( randomMovie , latitude , longitude);
             }
         });
-        //console.log('locals :'+res.locals.books);
 
-
-        //console.log(randomFriend);
     });
 
 });
@@ -182,28 +179,5 @@ function isLoggedIn(req, res, next) {
     // if they aren't redirect them to the home page
     res.redirect('/');
 }
-
-// /////////MeetUp//////////
-// // With text and latitude/longitude parameters
-//
-// function getMeetUpEvents() {
-//     meetup.getOpenEvents({
-//             'text': 'javascript',
-//             'lon': '-73.979431',
-//             'lat': '40.752125',
-//             'page': '1'
-//         },
-//         function(err, events) {
-//             var eventName = events.results[0].name;
-//             console.log(eventName);
-//             var eventUrl = events.results[0].event_url;
-//             console.log(eventUrl);
-//         });
-// }
-//
-//   getMeetUpEvents();
-//
-//
-// ////////////////////////
 
 module.exports = router;
