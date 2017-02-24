@@ -1,10 +1,3 @@
-////////////TasteKid////////////
-
-// We must declare "searchTerm" variable with Facebook movie/books/music/authors parameters
-
-// type: specifies the desired type of results. It can be one of the following:
-// music, movies, shows, books, authors, games.
-// If not specified, the results can have mixed types.
 
 function getTasteKidAPIResults(randomTasteKid, searchType) {
 
@@ -24,6 +17,7 @@ function getTasteKidAPIResults(randomTasteKid, searchType) {
         success: function(response) {
             console.log(response.Similar.Results[0].Name);
             const newTKrecomendation = `${response.Similar.Results[0].Name}`;
+
             const newUrl = `
             <a class="btn btn-primary btn-lg main-content-btn" href="https://en.wikipedia.org/wiki/Special:Search/${response.Similar.Results[0].Name}" role="button">Learn more</a>
             `;
@@ -37,7 +31,7 @@ function getTasteKidAPIResults(randomTasteKid, searchType) {
         }
     });
 }
-////////////TasteKid////////////
+//////////TasteKid////////////
 
 $(document).ready(function() {
 

@@ -74,18 +74,16 @@ function getFBData() {
                 data: JSON.stringify(obj),
                 contentType: "application/json",
                 url: '/account',
-                success: showFeedback,
+                success: function (){
+                  showFeedback
+                  window.location.replace("/profile");
+                  },
                 error: handleError
             });
         });
 }
 
-
-
-
-////////////Functions init////////////
 $(document).ready(function() {
-
     getFBData();
 
 });
