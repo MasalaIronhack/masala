@@ -114,7 +114,7 @@ router.get('/profile', function(req, res) {
 
                 var context = {
                     friend: randomFriend,
-                    book: randomBook,
+                    book: maxiRandom,
                     movie: randomMovie,
                     music: randomMusic,
                     latitude: latitude,
