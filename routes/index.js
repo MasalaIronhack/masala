@@ -9,6 +9,7 @@ var router = express.Router();
 const passport = require('passport');
 const meetup = require('meetup-api')({key: '406044782c42396269125310632a6519'});
 
+
 /* GET users listing. */
 
 router.get('/', function(req, res) {
@@ -72,9 +73,10 @@ router.post('/account', function(req, res) {
             });
             return;
         }
-        res.redirect('/profile');
+
         return;
     });
+      res.redirect('/profile');
 });
 
 router.get('/profile', function(req, res) {
@@ -119,10 +121,10 @@ router.get('/profile', function(req, res) {
                     longitude: longitude,
                 }
 
-            function getMeetUpEvents(random,latitude,longitude) {
+            function getMeetUpEvents(randomMovie,latitude,longitude) {
               var event = {};
                    meetup.getOpenEvents({
-                           'text': random,
+                           'text': randomMovie,
                            'lon': -3.68333,
                            'lat': 40.4,
                            'page': '1'
