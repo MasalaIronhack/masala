@@ -7,11 +7,10 @@
   <script src="http://connect.facebook.net/en_US/all.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-
   <link rel='stylesheet' href='/bootstrap/dist/css/bootstrap.min.css' />
   <link rel='stylesheet' href='/stylesheets/style-profile.css' />
   <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400" rel="stylesheet">
-  <title>Wellcome test, Masala</title>
+  <title>Wellcome to Masala</title>
 </head>
 <body>
 
@@ -36,8 +35,7 @@
       <div class="container-fluid meetup">
         <p>What about attending:</p>
           <button class=btn-jumbotron><h1><%=eventName%></h1></button>
-        <h1><%=eventUrl%></h1>
-          <p><a class="btn btn-primary btn-lg main-content-btn" href="#" role="button">Learn more</a></p>
+          <p><a class="btn btn-primary btn-lg main-content-btn" href="<%=eventUrl%>" role="button">Check on Meetup</a></p>
       </div>
   </div>
 
@@ -48,7 +46,7 @@
         <p><button class=main-content-btn-taste>If you liked
           <h3 id="passBooksToMain"><%=book %></h3>you may like:</button></p>
         <button class=btn-jumbotron><h1 id="TK"></h1></button>
-          <p><a class="btn btn-primary btn-lg main-content-btn" href="https://en.wikipedia.org/wiki/Special:Search/" role="button">Learn more</a></p>
+          <p id="NW"></p>
 
       </div>
   </div>
@@ -68,7 +66,7 @@
   </div>
   </footer>
 </body>
-  <script src="javascript/main.js" type="text/javascript"></script>
+  <script src="javascript/profile.js" type="text/javascript"></script>
 <script type="text/javascript">
  var foo = document.getElementById('passBooksToMain').innerHTML;
  var taste = document.getElementById('TK').innerHTML;

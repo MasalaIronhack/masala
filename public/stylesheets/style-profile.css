@@ -150,6 +150,10 @@ a:active {
   margin-top: 5px;
 }
 
+.jumbotron {
+    background-color: transparent;
+}
+
 .jumbotron p {
     font-weight: 400;
     margin-bottom: 0px;
@@ -175,7 +179,7 @@ a:active {
 }
 
 .content-logo img {
-    margin-top: 10%;
+    margin-top: 15%;
     width: 50%;
     padding-right: 3%;
 }
@@ -305,4 +309,12 @@ footer img {
 
 .footer-margin {
   margin-top: -50px;
+}
+
+.progress {
+  margin-top: 15px;
+}
+
+#random {
+  margin-top: 10%;
 }
