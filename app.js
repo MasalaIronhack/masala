@@ -23,7 +23,7 @@ const MongoStore = require("connect-mongo")(session);
 const meetup = require('meetup-api')({key: '406044782c42396269125310632a6519'});
 const app = express();
 
-mongoose.connect('mongodb://localhost/masala');
+mongoose.connect(process.env.MONGODB_URI);
 
 passport.serializeUser(function(user, done) {
     done(null, user.id);
