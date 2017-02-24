@@ -74,7 +74,10 @@ function getFBData() {
                 data: JSON.stringify(obj),
                 contentType: "application/json",
                 url: '/account',
-                success: showFeedback,
+                success: function (){
+                  showFeedback
+                  window.location.replace("/profile");
+                  },
                 error: handleError
             });
         });
@@ -123,5 +126,8 @@ $(document).ready(function() {
 
     getFBData();
     getTasteKidAPIResults(randomTasteKid);
+
+
+
 
 });

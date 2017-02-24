@@ -148,6 +148,7 @@ router.get('/profile', function(req, res) {
                                   context.eventUrl  = "https://www.meetup.com/fr-FR/bibliotecaalejandrina/events/237914461/?eventId=237914461";
                                }
                          }
+                         console.log("finalContext",context);
                          res.render('profile', context);
                        });
                 }
