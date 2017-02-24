@@ -85,4 +85,5 @@ function getFBData() {
 
 $(document).ready(function() {
     getFBData();
+
 });

@@ -1,3 +1,4 @@
+
 function getTasteKidAPIResults(randomTasteKid, searchType) {
 
     var params = {
@@ -17,7 +18,12 @@ function getTasteKidAPIResults(randomTasteKid, searchType) {
             console.log(response.Similar.Results[0].Name);
             const newTKrecomendation = `${response.Similar.Results[0].Name}`;
 
+            const newUrl = `
+            <a class="btn btn-primary btn-lg main-content-btn" href="https://en.wikipedia.org/wiki/Special:Search/${response.Similar.Results[0].Name}" role="button">Learn more</a>
+            `;
+
             $('#TK').append(newTKrecomendation);
+            $('#NW').append(newUrl);
 
         },
         error: function(response) {
@@ -25,7 +31,10 @@ function getTasteKidAPIResults(randomTasteKid, searchType) {
         }
     });
 }
+//////////TasteKid////////////
 
 $(document).ready(function() {
+
     getTasteKidAPIResults(randomTasteKid);
+
 });
