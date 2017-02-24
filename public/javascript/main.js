@@ -83,24 +83,6 @@ function getFBData() {
         });
 }
 
-
-////////////TasteKid////////////
-
-// We must declare "searchTerm" variable with Facebook movie/books/music/authors parameters
-
-// type: specifies the desired type of results. It can be one of the following:
-// music, movies, shows, books, authors, games.
-// If not specified, the results can have mixed types.
-
-
-////////////TasteKid////////////
-
-////////////Functions init////////////
 $(document).ready(function() {
     getFBData();
-    getTasteKidAPIResults(randomTasteKid);
-
-
-
-
 });
